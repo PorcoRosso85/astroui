@@ -3,6 +3,10 @@ import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import { greet } from '../modules/greet';
 const name = 'World TS';
+import { fetchData } from '../modules/fetch'
+const fetchTarget = "https://jsonplaceholder.typicode.com/todos/1";
+// import { SimpleGraph, graphConfig,  graphData } from '../modules/graph'
+// const graph = new SimpleGraph(graphData, graphConfig)
 ---
 
 <Layout title="Welcome to Astro.">
@@ -41,6 +45,10 @@ const name = 'World TS';
 			To get started, open the directory <code>src/pages</code> in your project.<br />
 			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
 		</p>
+		<h2>Fetch Target: {fetchData(fetchTarget)}</h2>
+		<!-- <p>
+			{graph}
+		</p> -->
 		<ul role="list" class="link-card-grid">
 			<Card
 				href="https://docs.astro.build/"
