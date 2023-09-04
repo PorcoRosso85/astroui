@@ -1,10 +1,5 @@
 import G6 from "@antv/g6";
-
-export const graphConfig = {
-  container: "mountNode",
-  width: 800,
-  height: 600,
-};
+// import Sigma from "sigma";
 
 export const graphData = {
   nodes: [
@@ -18,12 +13,40 @@ export const graphData = {
   ],
 };
 
+export const graphConfig = (container: HTMLElement) => {
+  return {
+    container: container,
+    width: 800,
+    height: 600,
+  };
+};
+
 export class SimpleGraph {
-  private graph: G6.Graph;
+  private graph;
 
   constructor(data: any, config: any) {
-    this.graph = new G6.Graph(config);
-    this.graph.data(data);
-    this.graph.render();
+    if (typeof window !== "undefined") {
+      this.graph = new G6.Graph(config);
+      this.graph.data(data);
+      this.graph.render();
+    }
   }
 }
+
+// export const graphConfig = () => {
+//   return {
+//     minCameraRatio: 0.1,
+//     maxCameraRatio: 10,
+//   };
+// };
+
+// export class SimpleGraph {
+//   private graph;
+
+//   constructor(data: any, container: HTMLElement, config: any) {
+//     if (typeof window !== "undefined") {
+//       this.graph = new Sigma(data, container, config);
+//       this.graph.refresh();
+//     }
+//   }
+// }
