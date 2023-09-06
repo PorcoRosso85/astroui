@@ -1,4 +1,4 @@
-<head>
+<!-- <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>dialog element</title>
@@ -14,7 +14,7 @@
       opacity: 0;
     }
     dialog::backdrop {
-      background-color: skyblue;
+      background-color: lightgray;
     }
     html:has(dialog[open]) {
       overflow: hidden;
@@ -54,4 +54,44 @@
       }
     });
   </script>
+</body> -->
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dialog element</title>
+  <style>
+    dialog {
+      border: 0;
+      display: block;
+      position: fixed;
+      inset: 0;
+      transition: opacity 0.5s ease-out;
+    }
+    dialog:not([open]) {
+      opacity: 0;
+    }
+    dialog::backdrop {
+      background-color: skyblue;
+    }
+    html:has(dialog[open]) {
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <button class="openBtn">Open</button>
+  <dialog style="padding: 0">
+    <div style="padding: 1em">
+      <h2>Dialog</h2>
+      <div id="nodeInfo"></div>
+      <button class="closeBtn" value="close">Close</button>
+      <form>
+        <button value="cancel">cancel</button>
+        <button value="submit">submit</button>
+      </form>
+    </div>
+  </dialog>
+  <div id="container"></div>
+  <!-- Include your Sigma and Graphology scripts here -->
 </body>

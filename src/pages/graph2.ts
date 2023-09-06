@@ -30,16 +30,29 @@ const renderer = new Sigma(graph, container);
 // グラフを描画（通常は不要で、レンダラが自動で描画を管理します）
 renderer.refresh();
 
-// ノードがクリックされたときのイベントハンドラを追加
-renderer.on("clickNode", (event) => {
-  // クリックされたノードのIDを取得
-  const nodeId = event.node;
+// Get the dialog and closeBtn elements
+const dialog = document.querySelector("dialog");
+const closeBtn = document.querySelector(".closeBtn");
 
-  // クリックされたノードの属性を取得
+// Close button event handler
+closeBtn.addEventListener("click", () => {
+  dialog.close();
+});
+
+// Node click event handler
+renderer.on("clickNode", (event) => {
+  const nodeId = event.node;
   const nodeData = graph.getNodeAttributes(nodeId);
 
-  // ポップアップでデータを表示
-  alert(
-    `Node clicked:\n- ID: ${nodeId}\n- X: ${nodeData.x}\n- Y: ${nodeData.y}\n- Color: ${nodeData.color}`
-  );
+  // Update the dialog content
+  document.getElementById("nodeInfo").innerHTML = `
+    Node clicked:<br>
+    - ID: ${nodeId}<br>
+    - X: ${nodeData.x}<br>
+    - Y: ${nodeData.y}<br>
+    - Color: ${nodeData.color || "N/A"}
+  `;
+
+  // Open the dialog
+  dialog.showModal();
 });
