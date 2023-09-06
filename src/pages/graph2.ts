@@ -30,10 +30,16 @@ const renderer = new Sigma(graph, container);
 // グラフを描画（通常は不要で、レンダラが自動で描画を管理します）
 renderer.refresh();
 
-renderer.on("clickNode", function (event) {
-  // クリックされたノードのデータを取得
-  const nodeData = graph.getNodeAttributes(event.data.node);
+// ノードがクリックされたときのイベントハンドラを追加
+renderer.on("clickNode", (event) => {
+  // クリックされたノードのIDを取得
+  const nodeId = event.node;
+
+  // クリックされたノードの属性を取得
+  const nodeData = graph.getNodeAttributes(nodeId);
 
   // ポップアップでデータを表示
-  alert(`Node clicked: ${nodeData.label}`);
+  alert(
+    `Node clicked:\n- ID: ${nodeId}\n- X: ${nodeData.x}\n- Y: ${nodeData.y}\n- Color: ${nodeData.color}`
+  );
 });
