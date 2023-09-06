@@ -12,6 +12,7 @@
   "dependencies": {
     "@antv/g6": "^4.8.21",
     "astro": "^3.0.7",
+    "graphology": "^0.25.4",
     "sigma": "^3.0.0-alpha3"
   }
 }
