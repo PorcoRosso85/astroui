@@ -8,6 +8,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const pageTitle = Astro.props;
 
 import Graph from './graph.astro';
+import AstroHeart from '../components/AstroHeart.astro'
+import AlertButton from '../components/AlertButton.astro'
+import Modal from '../components/Modal.astro'
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -89,3 +92,8 @@ import Graph from './graph.astro';
 <Graph />
 <h3>...webgl</h3>
 
+<AstroHeart />
+
+<AlertButton />
+
+<Modal />

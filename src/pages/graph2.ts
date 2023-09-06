@@ -29,3 +29,11 @@ const renderer = new Sigma(graph, container);
 
 // グラフを描画（通常は不要で、レンダラが自動で描画を管理します）
 renderer.refresh();
+
+renderer.on("clickNode", function (event) {
+  // クリックされたノードのデータを取得
+  const nodeData = graph.getNodeAttributes(event.data.node);
+
+  // ポップアップでデータを表示
+  alert(`Node clicked: ${nodeData.label}`);
+});

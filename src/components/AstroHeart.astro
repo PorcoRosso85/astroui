@@ -1,0 +1,26 @@
+<!-- カスタム要素 "astro-heart" でコンポーネント要素を囲みます。 -->
+<astro-heart>
+    <button aria-label="Heart">💜</button> × <span>0</span>
+  </astro-heart>
+  
+  <script>
+    // 新しいタイプのHTML要素の動作を定義する
+    class AstroHeart extends HTMLElement {
+      constructor() {
+        super();
+        let count = 0;
+  
+        const heartButton = this.querySelector('button');
+        const countSpan = this.querySelector('span');
+  
+        // ボタンがクリックされるごとにカウントを更新する。
+        heartButton.addEventListener('click', () => {
+          count++;
+          countSpan.textContent = count;
+        });
+      }
+    }
+  
+    // <astro-heart>要素としてAstroHeartクラスを利用することをブラウザに教える
+    customElements.define('astro-heart', AstroHeart);
+  </script>
